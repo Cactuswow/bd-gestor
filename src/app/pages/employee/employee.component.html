@@ -1,0 +1,64 @@
+<main class="p-3 max-w-6xl mx-auto flex flex-col gap-4 items-center">
+  <div class="flex gap-4">
+    <button (click)="createUser()">Crear usuario</button>
+    <button (click)="updateUser()">Editar usuario</button>
+    <button (click)="deleteUser()">Eliminar usuario</button>
+    <button (click)="form.reset()">Limpiar formulario</button>
+  </div>
+
+  <section class="flex gap-4 w-full">
+    <div class="flex-1 flex flex-col gap-4">
+      @for (employee of employeeService.employees; track $index) {
+      <div class="flex gap-4 bg-slate-50 rounded p-3">
+        <div class="flex-1 flex flex-col gap-1">
+          <p>Nombre: {{ employee.name }}</p>
+          <p>Apellido: {{ employee.lastName }}</p>
+        </div>
+        <div class="flex-1 flex flex-col gap-1">
+          <p>Celular: {{ employee.phone }}</p>
+          <p>Email: {{ employee.email }}</p>
+        </div>
+      </div>
+      }
+    </div>
+
+    <form [formGroup]="form" class="flex flex-col gap-2 flex-1">
+      <p>Agregar o editar un usuario</p>
+
+      <label>
+        Nombres
+        <input type="text" formControlName="name" name="name" />
+      </label>
+
+      <label>
+        Apellidos
+        <input type="text" formControlName="lastName" name="lastName" />
+      </label>
+
+      <label>
+        Celular
+        <input type="text" formControlName="phone" name="phone" />
+      </label>
+
+      <label>
+        Email
+        <input type="text" formControlName="email" name="email" />
+      </label>
+
+      <label>
+        Salario
+        <input type="text" formControlName="salary" name="salary" />
+      </label>
+
+      <label>
+        Tipo de empleado (R o A)
+        <input type="text" formControlName="employeeType" name="employeeType" />
+      </label>
+
+      <label>
+        Id (modificar)
+        <input type="text" formControlName="id" name="id" />
+      </label>
+    </form>
+  </section>
+</main>

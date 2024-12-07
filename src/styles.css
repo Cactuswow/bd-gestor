@@ -1,1 +1,16 @@
-/* You can add global styles to this file, and also import other style files */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+button {
+  padding: 10px 30px;
+  @apply bg-blue-400 rounded-sm font-semibold text-blue-50 hover:opacity-70 transition-opacity;
+}
+
+input {
+  @apply p-1 border rounded-sm;
+}
+
+label {
+  @apply flex flex-col gap-2
+}

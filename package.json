@@ -9,7 +9,8 @@
     "test": "ng test",
     "lint": "npx @biomejs/biome lint",
     "format": "npx @biomejs/biome format",
-    "check": "npx @biomejs/biome check"
+    "check": "npx @biomejs/biome check",
+    "dev": "nodemon ./src/backend/index.js"
   },
   "private": true,
   "dependencies": {
@@ -21,6 +22,9 @@
     "@angular/platform-browser": "^17.2.0",
     "@angular/platform-browser-dynamic": "^17.2.0",
     "@angular/router": "^17.2.0",
+    "cors": "^2.8.5",
+    "express": "^4.21.2",
+    "pg-promise": "^11.10.2",
     "rxjs": "~7.8.0",
     "sweetalert2": "^11.14.5",
     "tslib": "^2.3.0",
@@ -39,6 +43,7 @@
     "karma-coverage": "~2.2.0",
     "karma-jasmine": "~5.1.0",
     "karma-jasmine-html-reporter": "~2.1.0",
+    "nodemon": "^3.1.7",
     "postcss": "^8.4.49",
     "tailwindcss": "^3.4.16",
     "typescript": "~5.3.2"

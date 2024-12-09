@@ -16,7 +16,7 @@ export class EmployeeService {
 
   async fetchEmployees() {
     try {
-      const observable = this.httpClient.get<Employee[]>('XXXXXXXXXXXXXXXXXXX')
+      const observable = this.httpClient.get<Employee[]>('http://localhost:3000/employees')
       const response = await toPromise(observable)
       this.employees = response
     } catch {
@@ -37,7 +37,7 @@ export class EmployeeService {
   async updateEmployee(employee: Employee) {
     try {
       const observer = this.httpClient.put<Employee>(
-        `XXXXXXXXXXXXXXXXXXX/${employee.id}`,
+        `http://localhost:3000/employees/${employee.id}`,
         employee
       )
 
@@ -53,7 +53,7 @@ export class EmployeeService {
   async createEmployee(employee: Partial<Employee>) {
     try {
       const observer = this.httpClient.post<Employee>(
-        'XXXXXXXXXXXXXXXXXXX',
+        'http://localhost:3000/employees',
         employee
       )
 
@@ -69,7 +69,7 @@ export class EmployeeService {
   async deleteEmployee(id: Employee['id']) {
     try {
       const observer = this.httpClient.delete<Employee>(
-        `XXXXXXXXXXXXXXXXXXX/${id}`
+        `http://localhost:3000/employees/${id}`
       )
 
       await toPromise(observer)

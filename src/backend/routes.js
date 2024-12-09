@@ -22,15 +22,10 @@ router.get('/customers', async (_req, res) => {
 
 router.post('/customers', async (req, res) => {
   const pg = new Pg().getClient
-  const {
-    firstName,
-    middleName,
-    firstLastName,
-    middleLastName,
-    phone,
-    email,
-    cityId
-  } = req.body
+  const { name, lastName, phone, email, cityId } = req.body
+
+  const [firstName, middleName] = name
+  const [firstLastName, middleLastName] = lastName
 
   const customers = await pg.query(
     `INSERT INTO sk.customers (first_name, middle_name, first_last_name, middle_last_name, phone_number, email, cty_id)
@@ -45,15 +40,10 @@ router.post('/customers', async (req, res) => {
 
 router.put('/customers/:id', async (req, res) => {
   const pg = new Pg().getClient
-  const {
-    firstName,
-    middleName,
-    firstLastName,
-    middleLastName,
-    phone,
-    email,
-    cityId
-  } = req.body
+  const { name, lastName, phone, email, cityId } = req.body
+
+  const [firstName, middleName] = name
+  const [firstLastName, middleLastName] = lastName
 
   const customers = await pg.query(
     `UPDATE sk.customers

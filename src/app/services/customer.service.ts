@@ -16,7 +16,9 @@ export class CustomerService {
 
   async fetchCustomers() {
     try {
-      const observable = this.httpClient.get<Customer[]>('XXXXXXXXXXXXXXXXXXX')
+      const observable = this.httpClient.get<Customer[]>(
+        'http://localhost:3000/customers'
+      )
       const response = await toPromise(observable)
       this.customers = response
     } catch {
@@ -36,7 +38,7 @@ export class CustomerService {
   async updateCustomer(customer: Customer) {
     try {
       const observer = this.httpClient.put<Customer>(
-        `XXXXXXXXXXXXXXXXXXX/${customer.id}`,
+        `http://localhost:3000/customers/${customer.id}`,
         customer
       )
 
@@ -52,7 +54,7 @@ export class CustomerService {
   async createCustomer(customer: Partial<Customer>) {
     try {
       const observer = this.httpClient.post<Customer>(
-        'XXXXXXXXXXXXXXXXXXX',
+        'http://localhost:3000/customers',
         customer
       )
 
@@ -68,7 +70,7 @@ export class CustomerService {
   async deleteCustomer(id: Customer['id']) {
     try {
       const observer = this.httpClient.delete<Customer>(
-        `XXXXXXXXXXXXXXXXXXX/${id}`
+        `http://localhost:3000/customers/${id}`
       )
 
       await toPromise(observer)

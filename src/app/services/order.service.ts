@@ -16,7 +16,7 @@ export class OrderService {
 
   async fetchOrders() {
     try {
-      const observable = this.httpClient.get<Order[]>('XXXXXXXXXXXXXXXXXXX')
+      const observable = this.httpClient.get<Order[]>('http://localhost:3000/orders')
       const response = await toPromise(observable)
       this.orders = response
     } catch {
@@ -37,7 +37,7 @@ export class OrderService {
   async updateOrder(order: Partial<Order>) {
     try {
       const observer = this.httpClient.put<Order>(
-        `XXXXXXXXXXXXXXXXXXX/${order.id}`,
+        `http://localhost:3000/orders/${order.id}`,
         order
       )
 
@@ -52,7 +52,7 @@ export class OrderService {
 
   async createOrder(order: Partial<Order>) {
     try {
-      const observer = this.httpClient.post<Order>('XXXXXXXXXXXXXXXXXXX', order)
+      const observer = this.httpClient.post<Order>('http://localhost:3000/orders', order)
 
       await toPromise(observer)
       await this.fetchOrders()
@@ -66,7 +66,7 @@ export class OrderService {
   async deleteOrder(id: Order['id']) {
     try {
       const observer = this.httpClient.delete<Order>(
-        `XXXXXXXXXXXXXXXXXXX/${id}`
+        `http://localhost:3000/orders/${id}`
       )
 
       await toPromise(observer)
